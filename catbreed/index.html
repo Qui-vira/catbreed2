@@ -32,10 +32,11 @@
         <p>In this dapp, I can store and retrieve my catbreed</p>
         <label for = "catbreed">Input </label>
         <input type="text" id = "catbreed" />
-
+    </div><br>
+    <div style="text-align: center;"> 
+      Name Of Breed: <p id="catBreed"></p>
     </div>
     <div>
-        <p id="catBreed"></p>
         <button onclick="storebreedname()">Store Catbreed</button>
     </div>
 
@@ -98,11 +99,11 @@
     const retrivebreednamePromise = catbreedContract.retrive();
 
     const catbreed = await retrivebreednamePromise;
+    document.getElementById("catBreed").innerText = catbreed;
     console.log(catbreed);
 }
     async function storebreedname() {
     const catbreed = document.getElementById("catbreed").value;
-    document.getElementById("catBreed").innerHTML = catbreed;
     const storebreednamePromise = catbreedContract.store(catbreed);
     await storebreednamePromise;
 }
